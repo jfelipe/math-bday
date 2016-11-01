@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
     <style>
       body {
         font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -203,9 +201,12 @@
         }
       }
     </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   </head>
 
   <body>
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
       <div class="container">
@@ -277,6 +278,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.15.1/moment.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script>
+      $(function() {
+        //Picker start
+        $('#bday').datepicker({
+          todayBtn: "linked",
+          orientation: "bottom auto",
+          autoclose: true,
+          todayHighlight: true
+        });
 
+        //Submit action
+        $( "#form" ).submit(function( event ) {
+          event.preventDefault();
+          let dateEntered = $('#bday').val();
+          console.log(dateEntered);
+          if (dateEntered) {
+            let startDate = moment(dateEntered);
+            let currentDate = moment(new Date().toJSON().slice(0, 10));
+            console.log(currentDate);
+            return nextBirthDay(currentDate, startDate);
+          } else {
+            let message = 'Please select a date';
+            $( "div#next-bday" ).html(message);
+          }
+        });
+
+        //Get the next birthday
+        function nextBirthDay(currentDate, startDate) {
+          let n, nextB;
+          let daysOld = currentDate.diff(startDate, 'days');
+          let message = '';
+
+          if (startDate.isSame(currentDate)) {
+            n = 1;
+            nextB = moment(startDate).add(Math.pow(10, n), 'days');
+            message = 'Congratz, You were born today, ' + 'Your first Math birthday is on ' + '<strong>' + nextB.format('LL') + '</strong>';
+          } else {
+            n = getLog(daysOld);
+            let daysFromNow = Math.pow(10, n+1) - daysOld
+            nextB = moment(currentDate).add(daysFromNow, 'days');
+            message = 'Your next Math birthday is ' + '<strong>' + daysFromNow + '</strong>' + ' days from now, on ' + '<strong>' + nextB.format('LL') + '</strong>';
+          }
+
+          $( "div#next-bday" ).html(message);
+        }
+
+        //Log base 10
+        function getLog(x) {
+          return Math.floor(Math.log10(x));
+        }
+       });
+    </script>
   </body>
 </html>
