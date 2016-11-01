@@ -17,9 +17,77 @@
   </head>
 
   <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu
+          </button>
+          <a class="navbar-brand" href="#">MathBirthdays.com</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="https://github.com/jfelipe/math-bday" target="_blank">Code</a>
+            </li>
+            <li>
+              <a href="https://d17oy1vhnax1f7.cloudfront.net/items/0s0A232Y052F2z0p3z3R/Image%202016-11-01%20at%206.26.57%20PM.png?v=bd14e0b1" target="_blank">Sketch 1</a>
+            </li>
+            <li>
+              <a href="https://d17oy1vhnax1f7.cloudfront.net/items/180l3g23432K0G1Y3I05/Image%202016-11-01%20at%206.34.55%20PM.png?v=4e7ddd91" target="_blank">Sketch 2</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="intro-text">
+              <span class="title"><span class="glyphicon glyphicon-star-empty"></span> Welcome to Math Birthdays <span class="glyphicon glyphicon-star-empty"></span></span>
+              <span class="description">A "Math Birthday" is a date that is 10^n days after the day they were born.
+                In your first math birthday you are 10 days old, for the second you are 100 days old, you got it.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <form id="form" class="">
+              <div class="bday input-group date">
+                <input id="bday" type="text" class="form-control text-center" data-provide="datepicker" data-date-end-date="0d" placeholder="Select your birthday" readonly="readonly"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+              </div>
+              <button id="btn-find" type="submit" class="btn btn-lg">Find my next math birthday</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="info">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <span class="fa fa-birthday-cake cake" aria-hidden="true"></span>
+          <div id="next-bday"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="navbar-fixed-bottom hidden-xs hidden-sm">
+      <div class="container-fluid ">
+        <p class="text-muted">Created by <a href="http://www.jfelipe.co">Juan Felipe Arango</a></p>
+      </div>
+    </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" charset="utf-8"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.15.1/moment.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    
   </body>
 </html>
